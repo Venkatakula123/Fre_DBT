@@ -20,3 +20,4 @@ sources:
         loaded_at_field: dtime
       - name: dept
       - name: emp
+      - name: salesdet
