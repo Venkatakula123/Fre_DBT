@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: test
+    database: airbnb
+    schema: raw
+    tables:
+      - name: raw_hosts
+      - name: raw_listings
+      - name: raw_reviews
+
+  - name: Exp
+    database: MYDB
+    schema: public
+    tables:
+      - name: em
+        freshness:
+          warn_after: { count: 1, period: minute }
+          error_after: { count: 5, period: minute }
+        loaded_at_field: dtime
+      - name: dept
+      - name: emp
