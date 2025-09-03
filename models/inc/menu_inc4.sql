@@ -4,7 +4,7 @@
     materialized='incremental', 
     unique_key='surrogate_key',
     on_schema_change = 'fail',
-    incremental_predicates = ["DBT_INTERNAL_DEST.sales_timestamp >= (select coalsec(max(sales_timestamp), '1900-01-01') FROM {{ this }})"]
+    incremental_predicates = ["DBT_INTERNAL_DEST.sales_timestamp >= (SELECT COALESCE(MAX(sales_timestamp), '1900-01-01') as sales_timestamp FROM {{ this }})"]
 ) }}
 
 SELECT
@@ -15,10 +15,10 @@ SELECT
     quantity,
     payment_method,
     sales_timestamp,
-    CASE    when payment_method = 'Credit Card' then 1
-            when payment_method = 'Debit Card' then 2
-            when payment_method = 'Cash' then 3
-            else 0 end as p_indicator,
+    CASE   when payment_method = 'Credit Card' then 1
+           when payment_method = 'Debit Card' then 2
+           when payment_method = 'Cash' then 3
+           else 0 end as p_indicator,
     sales_date
 FROM {{ source('Exp', 'salesdet') }}
 
