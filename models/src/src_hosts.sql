@@ -1,4 +1,4 @@
-{{ config(materialized="table") }}
+{{ config(materialized="table",transient = false) }}
 
 with src_hosts as (select * from {{ source("test", "raw_hosts") }})
 

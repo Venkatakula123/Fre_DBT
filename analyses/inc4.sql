@@ -1,0 +1,1 @@
+select COALESCE(max(sales_timestamp), '1900-01-01') as sales_timestamp FROM {{ ref('menu_inc4') }}
