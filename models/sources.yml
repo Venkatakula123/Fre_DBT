@@ -10,6 +10,7 @@ sources:
       - name: raw_reviews
       - name: orders
       - name: Customers
+      - name: ab
 
   - name: Exp
     database: MYDB
@@ -23,3 +24,26 @@ sources:
       - name: dept
       - name: emp
       - name: salesdet
+
+  - name: SLEEK
+    database: SLEEKMART_OMS
+    schema: TRAINING
+    tables:
+      - name: SALES_INDIA
+      - name: SALES_UK
+      - name: SALES_US
+      - name: TRAVELLERS
+      - name: TRIP_BOOKINGS
+      
+  - name: SLEEKL1
+    database: SLEEKMART_OMS
+    schema: L1_LANDING
+    tables:
+      - name: CUSTOMERS
+      - name: DATES
+      - name: EMPLOYEES
+      - name: ORDERITEMS
+      - name: ORDERS
+      - name: PRODUCTS
+      - name: STORES
+      - name: SUPPLIERS
