@@ -1,0 +1,5 @@
+seeds:
+  - name: partners
+    config:
+      column_types:
+        p_id: number

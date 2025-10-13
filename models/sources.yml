@@ -11,6 +11,21 @@ sources:
       - name: orders
       - name: Customers
       - name: ab
+      - name: City_Temperatures
+      - name: SALES_INDIA
+      - name: SALES_UK
+      - name: SALES_US
+      - name: TRAVELLERS
+      - name: TRIP_BOOKINGS
+      - name: CUSTOMERS
+      - name: DATES
+      - name: EMPLOYEES
+      - name: ORDERITEMS
+      - name: ORDERS
+      - name: PRODUCTS
+      - name: STORES
+      - name: SUPPLIERS
+      - name: auditlog
 
   - name: Exp
     database: MYDB
@@ -34,7 +49,7 @@ sources:
       - name: SALES_US
       - name: TRAVELLERS
       - name: TRIP_BOOKINGS
-      
+
   - name: SLEEKL1
     database: SLEEKMART_OMS
     schema: L1_LANDING

@@ -35,6 +35,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 # continue to be built as views. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 
+on-run-start:
+  - "{{ auditlog('run-start') }}"
+on-run-end: 
+  - "{{ auditlog('run-end') }}"
+
 models:
   my_new_project:
     # Applies to all files under models/example/
@@ -42,3 +47,7 @@ models:
       +materialized: view
     Ex:
       +materialized: table
+    sleek:
+      +materialized: 'table'
+      +schema: 'sleek'
+
