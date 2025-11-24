@@ -14,4 +14,4 @@ End as minimum_nights, host_id,
 replace(price_str,'$') :: number(10,2) as price,
 created_at,
 updated_at
- from src_listings
+ from dim_listings_cleansed
