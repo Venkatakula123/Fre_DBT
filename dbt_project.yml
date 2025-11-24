@@ -42,3 +42,12 @@ models:
       +materialized: view
     Ex:
       +materialized: table
+    src:
+      +materialized: view
+      +schema: SRC_TAB
+    dim:
+      +materialized: table
+      +schema: dimensions
+    fct:
+      +materialized: table
+      +schema: fact

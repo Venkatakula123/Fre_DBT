@@ -6,4 +6,4 @@ Select host_id,NVL(Host_name,'Annonymous') as host_name,
     NVL(is_superhost,'f') as is_superhost ,
      created_at,
       updated_at
-from src_hosts
+from dim_hosts_cleansed
