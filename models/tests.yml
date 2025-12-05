@@ -1,0 +1,10 @@
+models:
+  - name: salesdet
+    columns:
+      - name: salesid
+        tests:
+          - unique
+          - not_null
+          - accepted_values:
+              values: ['Refunded','Pending','Completed','Cancelled']
+               
