@@ -1,0 +1,1 @@
+Select * from {{ source('Exp', 'salesdet') }} where amount < 0

@@ -12,39 +12,61 @@ sources:
       - name: Customers
       - name: ab
       - name: employee
+        freshness:
+          warn_after: { count: 1, period: minute }
+          error_after: { count: 60, period: minute }
+        loaded_at_field: updated_at
+      - name: department
 
   - name: Exp
     database: MYDB
     schema: public
     tables:
-      - name: em
-        freshness:
-          warn_after: { count: 1, period: minute }
-          error_after: { count: 5, period: minute }
-        loaded_at_field: dtime
-      - name: dept
-      - name: emp
       - name: salesdet
+      - name: customers
+      - name: em
 
-  - name: SLEEK
+  - name: landing
+    description: The primary source system for order management system(OMS) data analytics.  
+    database: SLEEKMART_OMS
+    schema: L1_LANDING
+    config:
+      freshness:
+        warn_after: {count: 1, period: day}
+        error_after: {count: 3, period: day}
+    loaded_at_field: Updated_at
+
+    tables:
+      - name: customers
+        description: The customers table from order management system(OMS).      
+        identifier: customers
+      - name: orders
+        description: The orders table from order management system(OMS).      
+        identifier: orders
+      - name: orderitems
+        description: The orderitems table from order management system(OMS).      
+        identifier: orderitems
+      - name: employees
+        description: The employees table from order management system(OMS).      
+        identifier: employees
+        columns:
+          - name: address
+            description: Full Address of emplyees for Transport Arrangements.          
+            tests:
+              - not_null
+              - string_not_empty
+      - name: sales_us
+      - name: sales_europe
+      - name: sales_asia
+      - name: stores
+      - name: suppliers
+      - name: products
+
+  - name: training
     database: SLEEKMART_OMS
     schema: TRAINING
     tables:
-      - name: SALES_INDIA
-      - name: SALES_UK
-      - name: SALES_US
-      - name: TRAVELLERS
-      - name: TRIP_BOOKINGS
-      
-  - name: SLEEKL1
-    database: SLEEKMART_OMS
-    schema: L1_LANDING
-    tables:
-      - name: CUSTOMERS
-      - name: DATES
-      - name: EMPLOYEES
-      - name: ORDERITEMS
-      - name: ORDERS
-      - name: PRODUCTS
-      - name: STORES
-      - name: SUPPLIERS
+      - name: city_temperature
+      - name: sales_us
+      - name: sales_uk
+      - name: sales_india
